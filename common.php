@@ -17,6 +17,20 @@ function perform_http_request($method, $url, $data = false) {
 			}
 			
             break;
+            case "POSTT":
+                curl_setopt($curl, CURLOPT_POST, 1);
+    
+                if ($data) {
+                    curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+                    $headers = array(
+                        "Content-Type: application/json",
+                        "Accept: application/json",
+                        "authentication:6261b111340731c54a43751e",
+                     );
+                     curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+                }
+                
+                break;
         case "PUT":
             curl_setopt($curl, CURLOPT_PUT, 1);
 			

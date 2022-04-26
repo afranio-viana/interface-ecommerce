@@ -17,7 +17,10 @@ if($response=="null"){
     echo 'Usuário Não encontrado';
 }else{
     $a=json_decode($response,TRUE);
-    echo $a['_id'];
-    echo "<br>".$a['userNickname'];
+    session_start();
+    $_SESSION['id_user']=$a['_id'];
+    $_SESSION['email_user']=$a['userName'];
+    $_SESSION['nome_user']=$a['userNickname'];
+    header('Location:listar_produtos.php');
 
 }

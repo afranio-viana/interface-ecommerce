@@ -14,6 +14,7 @@
             <head></head>
             <body>
             <a href="logout.php">Logout</a> 
+            <a href="criar.php">Criar</a>
                 <div id="container">
                     <div id="form">
                         <?php
@@ -23,9 +24,10 @@
                                     echo "<input type='checkbox' value=".$value['_id']." name='cart[]'>";
                                     echo "<img src=".$value['productImage']." style='width:200px'><br>";
                                     echo "Nome: ".$value['productName'];
+                                    echo " Preco: ".$value['productPrice']." ";
                                     echo'<input type="number" name="quant[]" min="1" max="100">';
-                                    echo "<br><a href=''>Atualizar</a>";
-                                    echo "<a href=''>Deletar</a></br>";
+                                    echo "<br><a href='atualizar.php?id_produto=".base64_encode($value['_id'])."'>Atualizar</a>";
+                                    echo "<a href='delete.php?id_produto=".base64_encode($value['_id'])."'>Deletar</a></br>";
                                 
                             }
                                     echo"<input type='submit' value='Adcionar ao carrinho'>";

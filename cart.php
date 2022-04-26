@@ -17,7 +17,7 @@
             $request_data = json_encode(array("products" => $itens, "productQuantity" => $quant,"address"=>array("district"=>$bairro,
             "street"=>$rua,"number"=>$numero,"city"=>$cidade),"payment"=>array("card"=>array("number"=>$numerocard,"cvc"=>$cvc))));
             
-            $response = perform_http_request('POSTT', $rest_api_base_url . $post_endpoint, $request_data);
+            $response = perform_http_request('POST', $rest_api_base_url . $post_endpoint, $request_data);
             header('Location:listar_produtos.php');
     }else{
         header('Location:listar_produtos.php');

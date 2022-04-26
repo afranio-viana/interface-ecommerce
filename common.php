@@ -32,7 +32,30 @@ function perform_http_request($method, $url, $data = false) {
                 
                 break;
         case "PUT":
-            curl_setopt($curl, CURLOPT_PUT, 1);
+            curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'PATCH');
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+            
+            $headers = array(
+                "Content-Type: application/json",
+                "Accept: application/json",
+                "authentication:6261b111340731c54a43751e",
+             );
+             curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+            
+			
+            break;
+        case "DELET":
+            $curl = curl_init($url);
+            curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "DELETE"); 
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+            
+            $headers = array(
+                "Content-Type: application/json",
+                "Accept: application/json",
+                "authentication:6261b111340731c54a43751e",
+             );
+             curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+            
 			
             break;
         default:
